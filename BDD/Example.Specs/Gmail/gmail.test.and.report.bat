@@ -1,2 +1,2 @@
 @echo OFF
-..\Core\test.and.report.bat Canvas
+..\Core\test.and.report.bat GmailAbout

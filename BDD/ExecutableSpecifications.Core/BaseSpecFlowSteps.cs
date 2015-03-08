@@ -13,7 +13,7 @@ namespace ExecutableSpecifications.Core
 {
     internal class BaseSpecFlowSteps
     {
-        private const string DefaultScreenshotFilePath = @"c:\temp\ExecutableSpecificationsTestScreens\";
+        private const string DefaultScreenshotFilePath = @".";
 
         // ReSharper disable once StaticFieldInGenericType
         private static string _screenShotPath = string.Empty;
@@ -116,8 +116,9 @@ namespace ExecutableSpecifications.Core
             var file = sourceFilePath.Split(Path.DirectorySeparatorChar).Last().Replace(".cs", "." + caller);
             var fileName = String.Format("{0}{1}{2}{1}{3}", time, ".", file, "png");
             var shotPath = TestRunPath;
-            var st = new StackTrace();
+          
             // we are implicitly assuming the method with the longest name is our test method. HACK
+            // Instead we should be looking for existence of Specflow given / when / then attributes
             // ReSharper disable once AssignNullToNotNullAttribute
             var unitTestCaller = new StackTrace()
                 .GetFrames()

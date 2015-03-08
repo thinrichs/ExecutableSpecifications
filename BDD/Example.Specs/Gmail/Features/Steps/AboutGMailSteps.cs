@@ -19,26 +19,26 @@ namespace Example.Specs.Gmail.Features.Steps
         }
 
 
-        [Given(@"English About page is loaded")]
+        [Given]
         public void GivenEnglishAboutPageIsLoaded()
         {
             About.SetupPage();
         }
 
-        [When(@"I go to features")]
+        [When]
         public void WhenIGoToFeatures()
         {
             About.LookAtFeatures();
         }
 
-        [When(@"I click on More Features")]
+        [When]
         public void WhenIClickOnMoreFeatures()
         {
             About.LookAtMoreFeatures();
         }
 
-        [Then(@"HTTPS Security is mentioned")]
-        public void ThenSecurityIsAFeatureInTheExpansion()
+        [Then]
+        public void ThenHTTPSSecurityIsMentioned()
         {
             About.ShouldBeMoreSecure();
         }

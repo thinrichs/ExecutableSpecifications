@@ -1,7 +1,6 @@
 ﻿using Example.Specs.Data;
 using ExecutableSpecifications.Core.Watin;
 using WatiN.Core;
-using ExecutableSpecifications.Core;
 
 namespace Example.Specs.Gmail.Pages
 {
