@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Data>
+  <Hosts>
+    <Reddit>https://www.reddit.com</Reddit>
+    <GMail>http://www.gmail.com</GMail>
+  </Hosts>
+  <GMail>
+    <Username>SomeGmailUserName</Username>
+    <Password>i1bfUzqH6717y5</Password>
+  </GMail>
+  <Reddit>
+    <Username>SomeRedditUserName</Username>
+    <Password>HPEinsteinUser07</Password>
+  </Reddit>
+</Data>

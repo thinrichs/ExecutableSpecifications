@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03B768E3-4BB8-4FFA-B17B-3D37539AE6C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Example.Specs</RootNamespace>
+    <AssemblyName>Example.Specs</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SHDocVw">
+      <HintPath>..\packages\WatiN.2.1.0\lib\net40\Interop.SHDocVw.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+      <HintPath>..\packages\WatiN.2.1.0\lib\net40\Microsoft.mshtml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="WatiN.Core">
+      <HintPath>..\packages\WatiN.2.1.0\lib\net40\WatiN.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.2\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\TestData.cs" />
+    <Compile Include="Gmail\DomainSpecificLanguages\About.cs" />
+    <Compile Include="Gmail\Features\Steps\AboutGMailSteps.cs" />
+    <Compile Include="Gmail\Pages\About.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="create.step.definition.report.bat" />
+    <None Include="Gmail\gmail.test.and.report.bat" />
+    <None Include="Gmail\Features\About.feature" />
+    <None Include="packages.config" />
+    <None Include="test.and.report.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\Selenium.WebDriver.ChromeDriver.2.13.0.0\content\chromedriver.exe">
+      <Link>chromedriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Local.Data.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExecutableSpecifications.Core\ExecutableSpecifications.Core.csproj">
+      <Project>{0784fd9e-42a6-4b77-a4ef-0fe535faf3bd}</Project>
+      <Name>ExecutableSpecifications.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Reddit\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Label="DownloadChromeDriverBuildTask">
+    <CoreBuildDependsOn>DownloadChromeDriver;$(CoreBuildDependsOn)</CoreBuildDependsOn>
+    <ChromeDriverInstallPath>$(SolutionDir)packages\Selenium.WebDriver.ChromeDriver.2.13.0.0\</ChromeDriverInstallPath>
+    <ChromeDriverToolsPath>$(ChromeDriverInstallPath)tools\</ChromeDriverToolsPath>
+    <ChromeDriverInitScriptPath>$(ChromeDriverToolsPath)Init.ps1</ChromeDriverInitScriptPath>
+    <ChromeDriverPath>$(ChromeDriverInstallPath)content\chromedriver.exe</ChromeDriverPath>
+    <PowerShellExe Condition="'$(PowerShellExe)'==''">%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
+  </PropertyGroup>
+  <Target Name="DownloadChromeDriver" Label="DownloadChromeDriverBuildTask">
+    <Exec Condition="!Exists('$(ChromeDriverPath)')" Command="$(PowerShellExe) -NonInteractive -executionpolicy Unrestricted -command &quot;&amp; { &amp;'$(ChromeDriverInitScriptPath)' '$(ChromeDriverInstallPath)' '$(ChromeDriverToolsPath)'} &quot;" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
