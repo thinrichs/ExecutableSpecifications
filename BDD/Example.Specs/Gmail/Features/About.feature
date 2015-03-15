@@ -7,5 +7,5 @@ Feature: About GMail
 Scenario: English About Page Talks About Security	
 	Given English About page is loaded
 	 When I go to features
-	  And I click on More Features
-	 Then HTTPS Security is mentioned
+	  And I read security information
+	 Then HTTPS Security is mentioned 

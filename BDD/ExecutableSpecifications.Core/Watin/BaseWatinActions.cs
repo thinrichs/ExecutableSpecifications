@@ -169,6 +169,12 @@ namespace ExecutableSpecifications.Core.Watin
             }
         }
 
+        protected T PerformAction<T>(Action action, [CallerFilePath] string sourceFilePath = "", [CallerMemberName] string caller = "") where T : class
+        {
+            ProcessAction(action, sourceFilePath, caller);
+            return this as T;
+        }
+
         private static string FullPath(string sourceFilePath, string caller)
         {
             return BaseSpecFlowSteps.GetFullPath(sourceFilePath, caller);

@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="Interop.SHDocVw">
       <HintPath>..\packages\WatiN.2.1.0\lib\net40\Interop.SHDocVw.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -72,21 +72,32 @@
   <ItemGroup>
     <Compile Include="Data\TestData.cs" />
     <Compile Include="Gmail\DomainSpecificLanguages\About.cs" />
+    <Compile Include="Gmail\Features\About.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>About.feature</DependentUpon>
+    </Compile>
     <Compile Include="Gmail\Features\Steps\AboutGMailSteps.cs" />
-    <Compile Include="Gmail\Pages\About.cs" />
+    <Compile Include="Gmail\Pages\AboutPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="create.step.definition.report.bat" />
+    <None Include="Gmail\Features\About.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>About.feature.cs</LastGenOutput>
+    </None>
     <None Include="Gmail\gmail.test.and.report.bat" />
-    <None Include="Gmail\Features\About.feature" />
     <None Include="packages.config" />
+    <None Include="specflow.exe.config" />
     <None Include="test.and.report.bat" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Local.Data.xml" />
+    <Content Include="Data\Local.Data.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExecutableSpecifications.Core\ExecutableSpecifications.Core.csproj">
@@ -99,6 +110,9 @@
     <Folder Include="Reddit\DomainSpecificLanguages\" />
     <Folder Include="Reddit\Features\Steps\" />
     <Folder Include="Reddit\Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Label="DownloadChromeDriverBuildTask">

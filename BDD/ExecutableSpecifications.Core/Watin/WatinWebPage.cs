@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using WatiN.Core;
 using WatiN.Core.Constraints;
+using WatiN.Core.Exceptions;
 
 namespace ExecutableSpecifications.Core.Watin
 {
@@ -21,6 +22,10 @@ namespace ExecutableSpecifications.Core.Watin
                                  {typeof (Link),       c => Document.Link       (c)},
                                  {typeof (Table),      c => Document.Table      (c)},
                                  {typeof (RadioButton),c => Document.RadioButton(c)},
+                                 {typeof (ListItem),   c => Document.ListItem   (c)},
+                                 {typeof (Para),       c => Document.Para       (c)},
+                                 {typeof (Element),    c => Document.Element    (c)},
+                                 {typeof (Div),        c => Document.Div        (c)},
                              };
         }
 
@@ -43,13 +48,15 @@ namespace ExecutableSpecifications.Core.Watin
 
         abstract public string Server { get; }
 
-        protected T Get<T>(string id = "", string name = "", string value = "", string selector = "", string text = "") where T : Element
+        protected T Get<T>(string id = null, string name = null, string value = null,
+            string selector = null, string text = null, Tuple<string, string> attribute = null ) where T : Element
         {
             var elementType = typeof (T);
 
+
             if (!_typeToElement.ContainsKey(elementType))
             {
-                return null;
+                throw new NotImplementedException(String.Format("Don't know how to find elements of type {0}", elementType));
             }
             Constraint c;
             if (!String.IsNullOrEmpty(id))
@@ -72,11 +79,23 @@ namespace ExecutableSpecifications.Core.Watin
             {
                 c = Find.ByText(text);
             }
+            else if (attribute != null)
+            {
+                // fixup href (as best we can) if it wasn't given as a full URL
+                if ((attribute.Item1.ToLower() == "href") && (!attribute.Item2.ToLower().StartsWith("http")))
+                {
+                    attribute = Tuple.Create(attribute.Item1, Server + attribute.Item2);
+                }
+                c = Find.By(attribute.Item1, attribute.Item2);
+            }
             else
             {
                 return null;
             }
-            return _typeToElement[elementType](c) as T;
+            var result = _typeToElement[elementType](c) as T;
+            if (result != null && result.Exists) return result;
+
+            throw new ElementNotFoundException(elementType.ToString(), c.ToString(), Document.Url,result);
         }
 
         public void Load(IE browser, bool validatePageTitle = false, string url = "")

@@ -9,36 +9,40 @@ namespace Example.Specs.Gmail.DomainSpecificLanguages
 
     internal class About : BaseWatinActions<AuthenticatedWatinSession, AboutPage>
     {
-        private const string HttpsIsSecureBlurb = "HTTPS Encryption keeps your mail secure";
+        private const string HttpsIsSecureBlurb = "HTTPS encryption keeps your mail secure";
         internal static void SetupSession()
         {
             Initialize();
         }
-
-
-        internal static void SetupPage()
-        {
-            ProcessAction(LoadTestPage);
-        }
-
         internal static void DismantleSession()
         {
             DisposeSession();
         }
 
-        internal static void LookAtFeatures()
+        internal About SetupPage()
         {
-            ProcessAction(() => TestPage.Features.Click());
+            return PerformAction<About>(LoadTestPage);
         }
 
-        internal static void LookAtMoreFeatures()
+     
+        internal About LookAtFeatures()
         {
-            ProcessAction(() => TestPage.MoreFeatures.Click());
+            return PerformAction<About>(() => TestPage.Features.Click());
+        }
+
+        internal About LookAtMoreFeatures()
+        {
+            return PerformAction<About>(() => TestPage.MoreFeatures.Click());
         }
 
         internal static void ShouldBeMoreSecure()
         {
             ProcessAssertion(() => TestPage.SecureBlurb.Text.Should().Contain(HttpsIsSecureBlurb));
+        }
+
+        internal About LookAtMoreSecure()
+        {
+            return PerformAction<About>(() => TestPage.MoreSecure.Click());
         }
     }
 }

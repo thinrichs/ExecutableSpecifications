@@ -6,14 +6,22 @@ namespace Example.Specs.Gmail.Features.Steps
     [Binding]
     public class AboutGMailSteps
     {
+        private readonly About _about;
+
+        public AboutGMailSteps()
+        {
+            _about = new About();
+        }
+
         [BeforeScenario("GMailAbout")]
         internal static void BeforeAdminSessionFeature()
         {
+            
             About.SetupSession();
         }
 
         [AfterScenario("GMailAbout")]
-        internal static void AfterParmMaster()
+        internal void AfterGmailAbout()
         {
             About.DismantleSession();
         }
@@ -22,19 +30,20 @@ namespace Example.Specs.Gmail.Features.Steps
         [Given]
         public void GivenEnglishAboutPageIsLoaded()
         {
-            About.SetupPage();
+            _about.SetupPage();
         }
 
         [When]
         public void WhenIGoToFeatures()
         {
-            About.LookAtFeatures();
+            _about.LookAtFeatures();
         }
 
         [When]
-        public void WhenIClickOnMoreFeatures()
+        public void WhenIReadSecurityInformation()
         {
-            About.LookAtMoreFeatures();
+            _about.LookAtMoreFeatures()
+                 .LookAtMoreSecure();
         }
 
         [Then]
