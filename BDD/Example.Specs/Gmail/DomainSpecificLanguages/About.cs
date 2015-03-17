@@ -2,6 +2,7 @@
 using ExecutableSpecifications.Core;
 using ExecutableSpecifications.Core.Watin;
 using FluentAssertions;
+using WatiN.Core;
 
 
 namespace Example.Specs.Gmail.DomainSpecificLanguages
@@ -24,7 +25,7 @@ namespace Example.Specs.Gmail.DomainSpecificLanguages
             return PerformAction<About>(LoadTestPage);
         }
 
-     
+
         internal About LookAtFeatures()
         {
             return PerformAction<About>(() => TestPage.Features.Click());
@@ -37,7 +38,8 @@ namespace Example.Specs.Gmail.DomainSpecificLanguages
 
         internal static void ShouldBeMoreSecure()
         {
-            ProcessAssertion(() => TestPage.SecureBlurb.Text.Should().Contain(HttpsIsSecureBlurb));
+            ProcessAssertion(() => TestPage.MoreSecure.Parent.
+                Text.Should().Contain(HttpsIsSecureBlurb));
         }
 
         internal About LookAtMoreSecure()

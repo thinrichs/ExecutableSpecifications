@@ -26,6 +26,7 @@ namespace ExecutableSpecifications.Core.Watin
                                  {typeof (Para),       c => Document.Para       (c)},
                                  {typeof (Element),    c => Document.Element    (c)},
                                  {typeof (Div),        c => Document.Div        (c)},
+                                 {typeof (Image),      c => Document.Image      (c)},
                              };
         }
 
@@ -49,7 +50,7 @@ namespace ExecutableSpecifications.Core.Watin
         abstract public string Server { get; }
 
         protected T Get<T>(string id = null, string name = null, string value = null,
-            string selector = null, string text = null, Tuple<string, string> attribute = null ) where T : Element
+            string selector = null, string text = null, string alt = null, Tuple<string, string> attribute = null ) where T : Element
         {
             var elementType = typeof (T);
 
@@ -78,6 +79,10 @@ namespace ExecutableSpecifications.Core.Watin
             else if (!String.IsNullOrEmpty(text))
             {
                 c = Find.ByText(text);
+            }
+            else if (!String.IsNullOrEmpty(alt))
+            {
+                c = Find.ByAlt(alt);
             }
             else if (attribute != null)
             {

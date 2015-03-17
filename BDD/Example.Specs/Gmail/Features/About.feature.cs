@@ -34,7 +34,8 @@ namespace Example.Specs.Gmail.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "About GMail", "In order to provide details about gmail\r\nAs google\r\nI want to welcome users to gm" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(
+                new System.Globalization.CultureInfo("en-US"), "About GMail", "In order to provide details about gmail\r\nAs google\r\nI want to welcome users to gm" +
                     "ail", ProgrammingLanguage.CSharp, new string[] {
                         "GMailAbout"});
             testRunner.OnFeatureStart(featureInfo);
@@ -82,13 +83,13 @@ namespace Example.Specs.Gmail.Features
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks About Security", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.Given("English About page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
-  testRunner.When("I go to features", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("English About page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
-   testRunner.And("I read security information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("I go to features", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
+   testRunner.And("I read security information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
   testRunner.Then("HTTPS Security is mentioned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
