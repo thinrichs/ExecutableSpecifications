@@ -18,7 +18,10 @@ namespace Example.Specs.Gmail.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class AboutGMailFeature : Xunit.IUseFixture<AboutGMailFeature.FixtureData>, System.IDisposable
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("About GMail")]
+    [NUnit.Framework.CategoryAttribute("GMailAbout")]
+    public partial class AboutGMailFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -26,31 +29,29 @@ namespace Example.Specs.Gmail.Features
 #line 1 "About.feature"
 #line hidden
         
-        public AboutGMailFeature()
-        {
-            this.TestInitialize();
-        }
-        
-        public static void FeatureSetup()
+        [NUnit.Framework.TestFixtureSetUpAttribute()]
+        public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(
-                new System.Globalization.CultureInfo("en-US"), "About GMail", "In order to provide details about gmail\r\nAs google\r\nI want to welcome users to gm" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "About GMail", "In order to provide details about gmail\r\nAs google\r\nI want to welcome users to gm" +
                     "ail", ProgrammingLanguage.CSharp, new string[] {
                         "GMailAbout"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        public static void FeatureTearDown()
+        [NUnit.Framework.TestFixtureTearDownAttribute()]
+        public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -66,18 +67,8 @@ namespace Example.Specs.Gmail.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void SetFixture(AboutGMailFeature.FixtureData fixtureData)
-        {
-        }
-        
-        void System.IDisposable.Dispose()
-        {
-            this.ScenarioTearDown();
-        }
-        
-        [Xunit.FactAttribute()]
-        [Xunit.TraitAttribute("FeatureTitle", "About GMail")]
-        [Xunit.TraitAttribute("Description", "English About Page Talks About Security")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("English About Page Talks About Security")]
         public virtual void EnglishAboutPageTalksAboutSecurity()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks About Security", ((string[])(null)));
@@ -93,22 +84,6 @@ this.ScenarioSetup(scenarioInfo);
   testRunner.Then("HTTPS Security is mentioned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        public class FixtureData : System.IDisposable
-        {
-            
-            public FixtureData()
-            {
-                AboutGMailFeature.FeatureSetup();
-            }
-            
-            void System.IDisposable.Dispose()
-            {
-                AboutGMailFeature.FeatureTearDown();
-            }
         }
     }
 }
