@@ -1,1 +1,1 @@
-..\packages\SpecFlow.1.9.2\tools\specflow.exe stepdefinitionreport Example.Specs.csproj /binFolder:bin /out:bin\testreports\StepDefinitionReport.html
+..\packages\SpecFlow.1.9.0\tools\specflow.exe stepdefinitionreport Example.Specs.csproj /binFolder:bin /out:bin\testreports\StepDefinitionReport.html

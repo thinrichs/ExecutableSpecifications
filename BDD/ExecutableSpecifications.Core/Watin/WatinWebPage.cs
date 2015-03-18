@@ -1,6 +1,6 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using System.Collections.Generic;
-using FluentAssertions;
 using WatiN.Core;
 using WatiN.Core.Constraints;
 using WatiN.Core.Exceptions;
