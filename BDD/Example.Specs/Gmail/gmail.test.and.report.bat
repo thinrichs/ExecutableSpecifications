@@ -1,2 +1,2 @@
 @echo OFF
-..\test.and.report.bat GMailAbout
+%~dp0..\test.and.report.bat GMailAbout

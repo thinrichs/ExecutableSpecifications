@@ -7,6 +7,13 @@ Feature: About GMail
 Background: 
 	Given English About page is loaded
 
+@Ignore
+Scenario: Show Gherkin syntax in an ignored test
+	Given Some arrangement of the system
+	 When Some actions are performed	  
+	 Then Some assertion is made
+
+
 Scenario: English About Page Talks About Security	
 	
 	 When I go to `Features`
@@ -14,9 +21,12 @@ Scenario: English About Page Talks About Security
 	 Then HTTPS Security is mentioned 
 	
 
-Scenario: English About Page Talks about Google Play			
+Scenario: English About Page Talks Links To Google Play			
 
 	 When I go to `For Mobile`
-	  And Nvigate to Google Play
+	  And I Navigate to Google Play
 	 Then GMail is mentioned
+
+
+
 	 

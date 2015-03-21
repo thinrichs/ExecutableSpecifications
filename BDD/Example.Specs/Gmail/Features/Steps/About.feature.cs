@@ -76,38 +76,59 @@ namespace Example.Specs.Gmail.Features.Steps
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("English About Page Talks About Security")]
-        public virtual void EnglishAboutPageTalksAboutSecurity()
+        [NUnit.Framework.DescriptionAttribute("Show Gherkin syntax in an ignored test")]
+        [NUnit.Framework.IgnoreAttribute()]
+        public virtual void ShowGherkinSyntaxInAnIgnoredTest()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks About Security", ((string[])(null)));
-#line 10
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show Gherkin syntax in an ignored test", new string[] {
+                        "Ignore"});
+#line 11
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
 #line 12
-  testRunner.When("I go to `Features`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("Some arrangement of the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 13
-   testRunner.And("I read security information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("Some actions are performed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
+  testRunner.Then("Some assertion is made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("English About Page Talks About Security")]
+        public virtual void EnglishAboutPageTalksAboutSecurity()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks About Security", ((string[])(null)));
+#line 17
+this.ScenarioSetup(scenarioInfo);
+#line 7
+this.FeatureBackground();
+#line 19
+  testRunner.When("I go to `Features`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
+   testRunner.And("I read security information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
   testRunner.Then("HTTPS Security is mentioned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("English About Page Talks about Google Play")]
-        public virtual void EnglishAboutPageTalksAboutGooglePlay()
+        [NUnit.Framework.DescriptionAttribute("English About Page Talks Links To Google Play")]
+        public virtual void EnglishAboutPageTalksLinksToGooglePlay()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks about Google Play", ((string[])(null)));
-#line 17
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks Links To Google Play", ((string[])(null)));
+#line 24
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 19
+#line 26
   testRunner.When("I go to `For Mobile`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 20
-   testRunner.And("Nvigate to Google Play", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
+#line 27
+   testRunner.And("I Navigate to Google Play", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
   testRunner.Then("GMail is mentioned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
