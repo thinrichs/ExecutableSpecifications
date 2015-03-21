@@ -92,7 +92,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Data\TestData.cs" />
     <Compile Include="Gmail\DomainSpecificLanguages\About.cs" />
-    <Compile Include="Gmail\Features\About.feature.cs">
+    <Compile Include="Gmail\Features\Steps\About.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>About.feature</DependentUpon>
@@ -106,7 +106,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="create.step.definition.report.bat" />
-    <None Include="Gmail\Features\About.feature">
+    <None Include="Gmail\Features\Steps\About.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>About.feature.cs</LastGenOutput>
     </None>

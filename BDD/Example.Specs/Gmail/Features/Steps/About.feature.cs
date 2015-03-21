@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Example.Specs.Gmail.Features
+namespace Example.Specs.Gmail.Features.Steps
 {
     using TechTalk.SpecFlow;
     
@@ -67,21 +67,48 @@ namespace Example.Specs.Gmail.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 7
+#line 8
+ testRunner.Given("English About page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("English About Page Talks About Security")]
         public virtual void EnglishAboutPageTalksAboutSecurity()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks About Security", ((string[])(null)));
-#line 7
-this.ScenarioSetup(scenarioInfo);
-#line 9
- testRunner.Given("English About page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
-  testRunner.When("I go to features", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
-   testRunner.And("I read security information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
+#line 7
+this.FeatureBackground();
 #line 12
+  testRunner.When("I go to `Features`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 13
+   testRunner.And("I read security information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
   testRunner.Then("HTTPS Security is mentioned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("English About Page Talks about Google Play")]
+        public virtual void EnglishAboutPageTalksAboutGooglePlay()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("English About Page Talks about Google Play", ((string[])(null)));
+#line 17
+this.ScenarioSetup(scenarioInfo);
+#line 7
+this.FeatureBackground();
+#line 19
+  testRunner.When("I go to `For Mobile`", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
+   testRunner.And("Nvigate to Google Play", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+  testRunner.Then("GMail is mentioned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

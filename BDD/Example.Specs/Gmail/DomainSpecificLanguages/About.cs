@@ -25,6 +25,11 @@ namespace Example.Specs.Gmail.DomainSpecificLanguages
             return PerformAction<About>(LoadTestPage);
         }
 
+        internal About LookAtMobile()
+        {
+            return PerformAction<About>(() => TestPage.Mobile.Click());
+        }
+
 
         internal About LookAtFeatures()
         {

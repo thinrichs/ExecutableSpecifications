@@ -17,6 +17,11 @@ namespace Example.Specs.Gmail.Pages
             get { return Get<Link>(text: "More features"); }
         }
 
+        internal Link Mobile
+        {
+            get { return Get<Link>(text: "For mobile"); }
+        }
+
         public Link MoreSecure
         {
             get { return Get<Link>(attribute: Tuple.Create("data-g-action", "Gmail now even more secure")); }
